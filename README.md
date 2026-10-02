@@ -24,21 +24,21 @@
 
 This project compares two powerful tree-based ensemble learning algorithms for a regression problem:
 
-* 🌲 **Random Forest Regressor**
+- 🌲 **Random Forest Regressor**
 
-* ⚡ **XGBoost Regressor**
+- ⚡ **XGBoost Regressor**
 
 Both models are trained on the **California Housing dataset** and evaluated using:
 
-* Mean Squared Error (MSE)
+- Mean Squared Error (MSE)
 
-* R² score
+- R² score
 
-* Training time
+- Training time
 
-* Prediction time
+- Prediction time
 
-* Actual vs. predicted visualizations
+- Actual vs. predicted visualizations
 
 The main purpose of this project is not simply to train two models, but to understand **how ensemble learning works, how Random Forest and XGBoost differ internally, and how their performance compares under the same experimental setup**.
 
@@ -48,35 +48,35 @@ The main purpose of this project is not simply to train two models, but to under
 
 This project demonstrates:
 
-* Ensemble learning for regression
+- Ensemble learning for regression
 
-* Decision-tree-based prediction
+- Decision-tree-based prediction
 
-* Random Forest bagging
+- Random Forest bagging
 
-* Bootstrap sampling
+- Bootstrap sampling
 
-* Random feature selection
+- Random feature selection
 
-* Variance reduction
+- Variance reduction
 
-* XGBoost gradient boosting
+- XGBoost gradient boosting
 
-* Additive boosting models
+- Additive boosting models
 
-* Gradients and Hessians
+- Gradients and Hessians
 
-* Second-order optimization
+- Second-order optimization
 
-* L2 regularization
+- L2 regularization
 
-* Tree complexity control
+- Tree complexity control
 
-* Model evaluation
+- Model evaluation
 
-* Training and inference time comparison
+- Training and inference time comparison
 
-* Modular machine-learning project architecture
+- Modular machine-learning project architecture
 
 ---
 
@@ -88,13 +88,13 @@ The project uses the **California Housing dataset**.
 
 The dataset contains:
 
-* **20,640 observations**
+- **20,640 observations**
 
-* **8 numerical predictive features**
+- **8 numerical predictive features**
 
-* **1 continuous target**
+- **1 continuous target**
 
-* **No missing attribute values**
+- **No missing attribute values**
 
 The dataset was derived from the **1990 U.S. Census**, with observations representing California census block groups.
 
@@ -102,37 +102,37 @@ The target represents the **median house value for a district in units of $100,0
 
 ### Official sources
 
-* [Scikit-learn California Housing documentation]$https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
+- [Scikit-learn California Housing documentation]\(https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 
-* [Scikit-learn Real World Datasets]\(https://scikit-learn.org/stable/datasets/real_world.html)
+- [Scikit-learn Real World Datasets]\(https://scikit-learn.org/stable/datasets/real_world.html)
 
-* [Original StatLib dataset]\(https://lib.stat.cmu.edu/datasets/houses.zip)
+- [Original StatLib dataset]\(https://lib.stat.cmu.edu/datasets/houses.zip)
 
 ---
 
 ## 🧾 Dataset Features
 
-\| Feature      | Description                              |
+| Feature      | Description                              |
 
-\| ------------ | ---------------------------------------- |
+| ------------ | ---------------------------------------- |
 
-\| `MedInc`     | Median income in the block group         |
+| `MedInc`     | Median income in the block group         |
 
-\| `HouseAge`   | Median house age                         |
+| `HouseAge`   | Median house age                         |
 
-\| `AveRooms`   | Average number of rooms per household    |
+| `AveRooms`   | Average number of rooms per household    |
 
-\| `AveBedrms`  | Average number of bedrooms per household |
+| `AveBedrms`  | Average number of bedrooms per household |
 
-\| `Population` | Block-group population                   |
+| `Population` | Block-group population                   |
 
-\| `AveOccup`   | Average number of household members      |
+| `AveOccup`   | Average number of household members      |
 
-\| `Latitude`   | Geographic latitude                      |
+| `Latitude`   | Geographic latitude                      |
 
-\| `Longitude`  | Geographic longitude                     |
+| `Longitude`  | Geographic longitude                     |
 
-\| `Target`     | Median house value in $100,000 units     |
+| `Target`     | Median house value in $100,000 units     |
 
 For example:
 
@@ -294,13 +294,12 @@ Suppose the forest contains `B` trees.
 
 Each tree produces:
 
-$$
+```math
 \hat f_1(x),\hat f_2(x),...,\hat f_B(x)
-$$
-
+```
 For regression, the final prediction is:
 
-$$
+```math
 \boxed{
 
 \hat f_{RF}(x)
@@ -314,15 +313,14 @@ $$
 \hat f_b(x)
 
 }
-$$
-
+```
 where:
 
-* $B$ = number of trees
+- $B$ = number of trees
 
-* $\hat f_b(x)$ = prediction from tree $b$
+- $\hat f_b(x)$ = prediction from tree $b$
 
-* $\hat f_{RF}(x)$ = final Random Forest prediction
+- $\hat f_{RF}(x)$ = final Random Forest prediction
 
 Averaging helps reduce the effect of individual-tree errors.
 
@@ -334,7 +332,7 @@ Each Random Forest tree is still a decision tree.
 
 For regression, a common split criterion is Mean Squared Error:
 
-$$
+```math
 MSE=
 
 \frac{1}{n}
@@ -342,21 +340,20 @@ MSE=
 \sum_{i=1}^{n}
 
 (y_i-\bar y)^2
-$$
-
+```
 where:
 
-* $n$ = number of observations
+- $n$ = number of observations
 
-* $y_i$ = actual target
+- $y_i$ = actual target
 
-* $\bar y$ = mean target in the node
+- $\bar y$ = mean target in the node
 
 A candidate split divides observations into left and right nodes.
 
 The weighted split impurity is:
 
-$$
+```math
 MSE_{split}
 
 =
@@ -366,8 +363,7 @@ MSE_{split}
 +
 
 \frac{n_R}{n}MSE_R
-$$
-
+```
 The tree prefers splits that reduce impurity.
 
 ---
@@ -390,21 +386,21 @@ RandomForestRegressor(
 
 ### Important parameters
 
-\| Parameter           | Purpose                            |
+| Parameter           | Purpose                            |
 
-\| ------------------- | ---------------------------------- |
+| ------------------- | ---------------------------------- |
 
-\| `n_estimators`      | Number of trees                    |
+| `n_estimators`      | Number of trees                    |
 
-\| `max_depth`         | Maximum tree depth                 |
+| `max_depth`         | Maximum tree depth                 |
 
-\| `max_features`      | Features considered at splits      |
+| `max_features`      | Features considered at splits      |
 
-\| `min_samples_split` | Minimum samples required to split  |
+| `min_samples_split` | Minimum samples required to split  |
 
-\| `min_samples_leaf`  | Minimum samples in a leaf          |
+| `min_samples_leaf`  | Minimum samples in a leaf          |
 
-\| `bootstrap`         | Whether bootstrap samples are used |
+| `bootstrap`         | Whether bootstrap samples are used |
 
 ---
 
@@ -418,7 +414,7 @@ It is an optimized implementation of gradient-boosted decision trees.
 
 Official documentation:
 
-[XGBoost Documentation]$https://xgboost.readthedocs.io/)
+[XGBoost Documentation]\(https://xgboost.readthedocs.io/)
 
 Unlike Random Forest, XGBoost does not primarily build independent trees and average them.
 
@@ -474,7 +470,7 @@ This process continues for a specified number of boosting rounds.
 
 At boosting iteration $t$:
 
-$$
+```math
 \boxed{
 
 \hat y_i^{(t)}
@@ -488,19 +484,18 @@ $$
 f_t(x_i)
 
 }
-$$
-
+```
 where:
 
-* $\hat y_i^{(t-1)}$ = previous prediction
+- $\hat y_i^{(t-1)}$ = previous prediction
 
-* $f_t(x_i)$ = contribution from the new tree
+- $f_t(x_i)$ = contribution from the new tree
 
-* $\hat y_i^{(t)}$ = updated prediction
+- $\hat y_i^{(t)}$ = updated prediction
 
 After $K$ trees:
 
-$$
+```math
 \boxed{
 
 \hat y(x)
@@ -514,8 +509,7 @@ $$
 \sum_{k=1}^{K}f_k(x)
 
 }
-$$
-
+```
 The final prediction is therefore the accumulated contribution of all trees.
 
 ---
@@ -524,17 +518,16 @@ The final prediction is therefore the accumulated contribution of all trees.
 
 XGBoost minimizes an objective containing two components:
 
-$$
+```math
 \boxed{
 
 Objective = Loss + Regularization
 
 }
-$$
-
+```
 More formally:
 
-$$
+```math
 Obj
 
 =
@@ -548,19 +541,18 @@ L(y_i,\hat y_i)
 \sum_{k=1}^{K}
 
 \Omega(f_k)
-$$
-
+```
 where:
 
-* $L$ = training loss
+- $L$ = training loss
 
-* $y_i$ = actual target
+- $y_i$ = actual target
 
-* $\hat y_i$ = predicted target
+- $\hat y_i$ = predicted target
 
-* $f_k$ = tree $k$
+- $f_k$ = tree $k$
 
-* $\Omega(f_k)$ = complexity penalty
+- $\Omega(f_k)$ = complexity penalty
 
 The loss measures prediction error.
 
@@ -574,7 +566,7 @@ XGBoost uses first- and second-order information about the loss.
 
 ## Gradient
 
-$$
+```math
 g_i
 
 =
@@ -582,13 +574,12 @@ g_i
 \frac{\partial L(y_i,\hat y_i)}
 
 {\partial\hat y_i}
-$$
-
+```
 The gradient tells the model the direction in which the prediction should move to reduce the loss.
 
 ## Hessian
 
-$$
+```math
 h_i
 
 =
@@ -596,8 +587,7 @@ h_i
 \frac{\partial^2 L(y_i,\hat y_i)}
 
 {\partial\hat y_i^2}
-$$
-
+```
 The Hessian describes the curvature of the loss.
 
 ---
@@ -606,26 +596,23 @@ The Hessian describes the curvature of the loss.
 
 For squared-error loss:
 
-$$
+```math
 L(y,\hat y)
 
 =
 
 \frac{1}{2}(y-\hat y)^2
-$$
-
+```
 the gradient becomes:
 
-$$
+```math
 g_i=\hat y_i-y_i
-$$
-
+```
 and the Hessian becomes:
 
-$$
+```math
 h_i=1
-$$
-
+```
 This explains the common intuition that boosting "corrects residuals."
 
 However, technically, XGBoost uses **gradients and Hessians**, rather than simply fitting raw residuals.
@@ -636,7 +623,7 @@ However, technically, XGBoost uses **gradients and Hessians**, rather than simpl
 
 XGBoost uses a second-order approximation of the loss:
 
-$$
+```math
 Obj^{(t)}
 
 \approx
@@ -658,8 +645,7 @@ h_i f_t(x_i)^2
 +
 
 \Omega(f_t)
-$$
-
+```
 This allows XGBoost to optimize the next tree using both gradient and curvature information.
 
 ---
@@ -670,7 +656,7 @@ One of the important characteristics of XGBoost is that model complexity is expl
 
 The tree complexity term is:
 
-$$
+```math
 \boxed{
 
 \Omega(f)
@@ -688,17 +674,16 @@ $$
 \sum_{j=1}^{T}w_j^2
 
 }
-$$
-
+```
 where:
 
-* $T$ = number of leaves
+- $T$ = number of leaves
 
-* $w_j$ = value/score of leaf $j$
+- $w_j$ = value/score of leaf $j$
 
-* $\lambda$ = L2 regularization strength
+- $\lambda$ = L2 regularization strength
 
-* $\gamma$ = penalty associated with adding leaves
+- $\gamma$ = penalty associated with adding leaves
 
 ---
 
@@ -706,14 +691,13 @@ where:
 
 The L2 component is:
 
-$$
+```math
 \frac{1}{2}
 
 \lambda
 
 \sum_{j=1}^{T}w_j^2
-$$
-
+```
 The purpose is to discourage excessively large leaf values.
 
 As $\lambda$ increases:
@@ -744,19 +728,17 @@ In XGBoost, this regularization applies to **tree leaf weights/scores**.
 
 For a leaf $j$, define:
 
-$$
+```math
 G_j=\sum_{i\in I_j}g_i
-$$
-
+```
 and:
 
-$$
+```math
 H_j=\sum_{i\in I_j}h_i
-$$
-
+```
 The optimal leaf weight for a fixed tree structure is:
 
-$$
+```math
 \boxed{
 
 w_j^*
@@ -766,15 +748,14 @@ w_j^*
 -\frac{G_j}{H_j+\lambda}
 
 }
-$$
-
+```
 This equation demonstrates the interaction between:
 
-* Gradient information
+- Gradient information
 
-* Hessian information
+- Hessian information
 
-* L2 regularization
+- L2 regularization
 
 ---
 
@@ -784,7 +765,7 @@ XGBoost also evaluates whether a proposed split improves the objective enough to
 
 A simplified gain expression is:
 
-$$
+```math
 Gain
 
 =
@@ -810,17 +791,16 @@ Gain
 -
 
 \gamma
-$$
-
+```
 where:
 
-* $G_L,G_R$ = gradient sums
+- $G_L,G_R$ = gradient sums
 
-* $H_L,H_R$ = Hessian sums
+- $H_L,H_R$ = Hessian sums
 
-* $\lambda$ = L2 regularization
+- $\lambda$ = L2 regularization
 
-* $\gamma$ = split penalty
+- $\gamma$ = split penalty
 
 A split is useful only when its improvement justifies the additional complexity.
 
@@ -844,53 +824,53 @@ XGBRegressor(
 
 Important XGBoost parameters include:
 
-\| Parameter          | Purpose                            |
+| Parameter          | Purpose                            |
 
-\| ------------------ | ---------------------------------- |
+| ------------------ | ---------------------------------- |
 
-\| `n_estimators`     | Number of boosting trees           |
+| `n_estimators`     | Number of boosting trees           |
 
-\| `learning_rate`    | Contribution of each tree          |
+| `learning_rate`    | Contribution of each tree          |
 
-\| `max_depth`        | Maximum tree depth                 |
+| `max_depth`        | Maximum tree depth                 |
 
-\| `min_child_weight` | Minimum child weight               |
+| `min_child_weight` | Minimum child weight               |
 
-\| `subsample`        | Fraction of rows sampled           |
+| `subsample`        | Fraction of rows sampled           |
 
-\| `colsample_bytree` | Fraction of features sampled       |
+| `colsample_bytree` | Fraction of features sampled       |
 
-\| `gamma`            | Minimum loss reduction for a split |
+| `gamma`            | Minimum loss reduction for a split |
 
-\| `reg_lambda`       | L2 regularization                  |
+| `reg_lambda`       | L2 regularization                  |
 
-\| `reg_alpha`        | L1 regularization                  |
+| `reg_alpha`        | L1 regularization                  |
 
 ---
 
 # 🆚 Random Forest vs XGBoost
 
-\| Aspect              | Random Forest                               | XGBoost                                 |
+| Aspect              | Random Forest                               | XGBoost                                 |
 
-\| ------------------- | ------------------------------------------- | --------------------------------------- |
+| ------------------- | ------------------------------------------- | --------------------------------------- |
 
-\| Ensemble strategy   | Bagging                                     | Boosting                                |
+| Ensemble strategy   | Bagging                                     | Boosting                                |
 
-\| Tree relationship   | Mostly independent                          | Sequential                              |
+| Tree relationship   | Mostly independent                          | Sequential                              |
 
-\| Main idea           | Reduce variance                             | Iteratively reduce loss                 |
+| Main idea           | Reduce variance                             | Iteratively reduce loss                 |
 
-\| Training            | Trees can be trained independently          | Trees depend on previous predictions    |
+| Training            | Trees can be trained independently          | Trees depend on previous predictions    |
 
-\| Prediction          | Average tree predictions                    | Sum tree contributions                  |
+| Prediction          | Average tree predictions                    | Sum tree contributions                  |
 
-\| Sampling            | Bootstrap observations + feature randomness | Optional row/feature subsampling        |
+| Sampling            | Bootstrap observations + feature randomness | Optional row/feature subsampling        |
 
-\| Error correction    | Indirect through aggregation                | Directly improves previous model        |
+| Error correction    | Indirect through aggregation                | Directly improves previous model        |
 
-\| Regularization      | Tree/ensemble parameters                    | Explicit regularization + tree controls |
+| Regularization      | Tree/ensemble parameters                    | Explicit regularization + tree controls |
 
-\| Main characteristic | Stability                                   | Iterative optimization                  |
+| Main characteristic | Stability                                   | Iterative optimization                  |
 
 ### Mental model
 
@@ -1034,23 +1014,23 @@ Therefore, feature scaling is unnecessary for this project.
 
 ### Module Responsibilities
 
-\| Module             | Responsibility                                       |
+| Module             | Responsibility                                       |
 
-\| ------------------ | ---------------------------------------------------- |
+| ------------------ | ---------------------------------------------------- |
 
-\| `config.py`        | Paths and model configuration                        |
+| `config.py`        | Paths and model configuration                        |
 
-\| `data_loader.py`   | Dataset loading                                      |
+| `data_loader.py`   | Dataset loading                                      |
 
-\| `preprocessing.py` | Feature/target separation and train/test split       |
+| `preprocessing.py` | Feature/target separation and train/test split       |
 
-\| `trainer.py`       | Model training and training-time measurement         |
+| `trainer.py`       | Model training and training-time measurement         |
 
-\| `evaluator.py`     | Predictions, MSE, R² and prediction-time measurement |
+| `evaluator.py`     | Predictions, MSE, R² and prediction-time measurement |
 
-\| `visualizer.py`    | Actual-vs-predicted plots                            |
+| `visualizer.py`    | Actual-vs-predicted plots                            |
 
-\| `main.py`          | End-to-end orchestration                             |
+| `main.py`          | End-to-end orchestration                             |
 
 ---
 
@@ -1126,7 +1106,7 @@ Actual vs Predicted
 
 ## Mean Squared Error
 
-$$
+```math
 MSE=
 
 \frac{1}{n}
@@ -1134,8 +1114,7 @@ MSE=
 \sum_{i=1}^{n}
 
 (y_i-\hat y_i)^2
-$$
-
+```
 Lower MSE indicates smaller squared prediction errors.
 
 Because errors are squared, large errors receive greater weight.
@@ -1144,7 +1123,7 @@ Because errors are squared, large errors receive greater weight.
 
 ## R² Score
 
-$$
+```math
 R^2=
 
 1-
@@ -1158,15 +1137,14 @@ R^2=
 \sum_i(y_i-\bar y)^2
 
 }
-$$
-
+```
 Interpretation:
 
-* `R² = 1` → perfect predictions
+- `R² = 1` → perfect predictions
 
-* `R² = 0` → equivalent to predicting the test-set mean
+- `R² = 0` → equivalent to predicting the test-set mean
 
-* `R² < 0` → worse than the mean baseline
+- `R² < 0` → worse than the mean baseline
 
 ---
 
@@ -1246,27 +1224,27 @@ Using the same split and evaluation procedure makes the comparison consistent.
 
 Results from this project's run:
 
-\| Metric          | Random Forest |  XGBoost |
+| Metric          | Random Forest |  XGBoost |
 
-\| --------------- | ------------: | -------: |
+| --------------- | ------------: | -------: |
 
-\| Training Time   |     10.4109 s | 2.4220 s |
+| Training Time   |     10.4109 s | 2.4220 s |
 
-\| Prediction Time |      0.1886 s | 0.0060 s |
+| Prediction Time |      0.1886 s | 0.0060 s |
 
-\| MSE             |        0.2554 |   0.2226 |
+| MSE             |        0.2554 |   0.2226 |
 
-\| R²              |        0.8051 |   0.8301 |
+| R²              |        0.8051 |   0.8301 |
 
 For this particular train/test split and parameter configuration:
 
-* XGBoost produced a lower MSE.
+- XGBoost produced a lower MSE.
 
-* XGBoost produced a higher R².
+- XGBoost produced a higher R².
 
-* XGBoost had lower measured training time.
+- XGBoost had lower measured training time.
 
-* XGBoost had lower measured prediction time.
+- XGBoost had lower measured prediction time.
 
 These results describe **this experiment** and should not be interpreted as a universal claim that XGBoost will always outperform Random Forest.
 
@@ -1278,19 +1256,18 @@ The project generates Actual vs Predicted plots for both models.
 
 The ideal prediction line is:
 
-$$
+```math
 y=x
-$$
-
+```
 Interpretation:
 
-* Points close to the line → predictions close to actual values
+- Points close to the line → predictions close to actual values
 
-* Points above the line → overprediction
+- Points above the line → overprediction
 
-* Points below the line → underprediction
+- Points below the line → underprediction
 
-* Larger distance from the line → larger prediction error
+- Larger distance from the line → larger prediction error
 
 The plots also include `±1` standard deviation reference lines based on the test-target distribution.
 
@@ -1450,81 +1427,81 @@ R²: 0.8301
 
 ### Machine Learning
 
-* Supervised learning
+- Supervised learning
 
-* Regression
+- Regression
 
-* Train/test splitting
+- Train/test splitting
 
-* Model evaluation
+- Model evaluation
 
-* Bias-variance tradeoff
+- Bias-variance tradeoff
 
 ### Decision Trees
 
-* Recursive splitting
+- Recursive splitting
 
-* Regression-tree impurity
+- Regression-tree impurity
 
-* Tree depth
+- Tree depth
 
-* Leaf predictions
+- Leaf predictions
 
 ### Random Forest
 
-* Ensemble learning
+- Ensemble learning
 
-* Bagging
+- Bagging
 
-* Bootstrap sampling
+- Bootstrap sampling
 
-* Random feature selection
+- Random feature selection
 
-* Variance reduction
+- Variance reduction
 
-* Prediction aggregation
+- Prediction aggregation
 
 ### XGBoost
 
-* Gradient boosting
+- Gradient boosting
 
-* Additive models
+- Additive models
 
-* Loss minimization
+- Loss minimization
 
-* Gradients
+- Gradients
 
-* Hessians
+- Hessians
 
-* Second-order Taylor approximation
+- Second-order Taylor approximation
 
-* L1/L2 regularization
+- L1/L2 regularization
 
-* Tree complexity
+- Tree complexity
 
-* Split gain
+- Split gain
 
-* Learning rate
+- Learning rate
 
-* Boosting rounds
+- Boosting rounds
 
 ### Engineering
 
-* Modular Python
+- Modular Python
 
-* Configuration management
+- Configuration management
 
-* Type hints
+- Type hints
 
-* Docstrings
+- Docstrings
 
-* Reproducible experiments
+- Reproducible experiments
 
-* Runtime measurement
+- Runtime measurement
 
-* Visualization
+- Visualization
 
-* Git/GitHub organization
+- Git/GitHub organization
 
 ---
 
@@ -1534,45 +1511,45 @@ Tree-based ensemble models are widely useful for structured/tabular data.
 
 ### Finance
 
-* Credit risk
+- Credit risk
 
-* Fraud detection
+- Fraud detection
 
-* Default prediction
+- Default prediction
 
-* Risk scoring
+- Risk scoring
 
 ### Retail
 
-* Demand forecasting
+- Demand forecasting
 
-* Customer behavior prediction
+- Customer behavior prediction
 
-* Customer segmentation
+- Customer segmentation
 
 ### Healthcare
 
-* Risk prediction
+- Risk prediction
 
-* Patient outcome prediction
+- Patient outcome prediction
 
-* Medical tabular prediction
+- Medical tabular prediction
 
 ### Industry
 
-* Predictive maintenance
+- Predictive maintenance
 
-* Failure prediction
+- Failure prediction
 
-* Quality control
+- Quality control
 
 ### Real Estate
 
-* Property valuation
+- Property valuation
 
-* Price estimation
+- Price estimation
 
-* Market analysis
+- Market analysis
 
 ---
 
@@ -1584,13 +1561,13 @@ The California Housing dataset is historical and based on 1990 census data.
 
 Therefore:
 
-* It is not a current housing-market dataset.
+- It is not a current housing-market dataset.
 
-* Economic conditions have changed.
+- Economic conditions have changed.
 
-* Housing markets differ across locations and time.
+- Housing markets differ across locations and time.
 
-* The model should not be treated as a production property valuation system.
+- The model should not be treated as a production property valuation system.
 
 ## Model limitations
 
@@ -1598,17 +1575,17 @@ Both Random Forest and XGBoost can overfit when model complexity is not properly
 
 Performance depends on:
 
-* Dataset quality
+- Dataset quality
 
-* Feature quality
+- Feature quality
 
-* Hyperparameters
+- Hyperparameters
 
-* Train/test split
+- Train/test split
 
-* Data distribution
+- Data distribution
 
-* Evaluation methodology
+- Evaluation methodology
 
 The reported metrics represent one experimental configuration and are not guaranteed future performance.
 
@@ -1676,21 +1653,21 @@ The number of trees/boosting rounds used by the model.
 
 ### California Housing
 
-* [Scikit-learn — California Housing Dataset]\(https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
+- [Scikit-learn — California Housing Dataset]\(https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 
-* [Scikit-learn — Real World Datasets]\(https://scikit-learn.org/stable/datasets/real_world.html)
+- [Scikit-learn — Real World Datasets]\(https://scikit-learn.org/stable/datasets/real_world.html)
 
-* [StatLib — California Housing Dataset]\(https://lib.stat.cmu.edu/datasets/houses.zip)
+- [StatLib — California Housing Dataset]\(https://lib.stat.cmu.edu/datasets/houses.zip)
 
 ### XGBoost
 
-* [XGBoost Documentation]\(https://xgboost.readthedocs.io/)
+- [XGBoost Documentation]\(https://xgboost.readthedocs.io/)
 
-* [Introduction to Boosted Trees]\(https://xgboost.readthedocs.io/en/latest/tutorials/model.html)
+- [Introduction to Boosted Trees]\(https://xgboost.readthedocs.io/en/latest/tutorials/model.html)
 
-* [XGBoost Parameters]\(https://xgboost.readthedocs.io/en/latest/parameter.html)
+- [XGBoost Parameters]\(https://xgboost.readthedocs.io/en/latest/parameter.html)
 
-* [XGBoost Parameter Tuning]\(https://xgboost.readthedocs.io/en/stable/tutorials/param_tuning.html)
+- [XGBoost Parameter Tuning]\(https://xgboost.readthedocs.io/en/stable/tutorials/param_tuning.html)
 
 ---
 
