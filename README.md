@@ -318,11 +318,11 @@ $$
 
 where:
 
-* \\(B\$ = number of trees
+* $B$ = number of trees
 
-* \$\hat f_b(x)\$ = prediction from tree \$b\$
+* $\hat f_b(x)$ = prediction from tree $b$
 
-* \$\hat f_{RF}(x)\$ = final Random Forest prediction
+* $\hat f_{RF}(x)$ = final Random Forest prediction
 
 Averaging helps reduce the effect of individual-tree errors.
 
@@ -346,11 +346,11 @@ $$
 
 where:
 
-* \$n\$ = number of observations
+* $n$ = number of observations
 
-* \$y_i\$ = actual target
+* $y_i$ = actual target
 
-* \$\bar y\$ = mean target in the node
+* $\bar y$ = mean target in the node
 
 A candidate split divides observations into left and right nodes.
 
@@ -472,7 +472,7 @@ This process continues for a specified number of boosting rounds.
 
 # 📐 XGBoost Additive Model
 
-At boosting iteration \\(t\$:
+At boosting iteration $t$:
 
 $$
 \boxed{
@@ -492,13 +492,13 @@ $$
 
 where:
 
-* \$\hat y_i^{(t-1)}\$ = previous prediction
+* $\hat y_i^{(t-1)}$ = previous prediction
 
-* \$f_t(x_i)\$ = contribution from the new tree
+* $f_t(x_i)$ = contribution from the new tree
 
-* \$\hat y_i^{(t)}\$ = updated prediction
+* $\hat y_i^{(t)}$ = updated prediction
 
-After \$K\$ trees:
+After $K$ trees:
 
 $$
 \boxed{
@@ -552,15 +552,15 @@ $$
 
 where:
 
-* \$L\$ = training loss
+* $L$ = training loss
 
-* \$y_i\$ = actual target
+* $y_i$ = actual target
 
-* \$\hat y_i\$ = predicted target
+* $\hat y_i$ = predicted target
 
-* \$f_k\$ = tree \$k\$
+* $f_k$ = tree $k$
 
-* \$\Omega(f_k)\$ = complexity penalty
+* $\Omega(f_k)$ = complexity penalty
 
 The loss measures prediction error.
 
@@ -692,13 +692,13 @@ $$
 
 where:
 
-* \$T\$ = number of leaves
+* $T$ = number of leaves
 
-* \$w_j\$ = value/score of leaf \$j\$
+* $w_j$ = value/score of leaf $j$
 
-* \$\lambda\$ = L2 regularization strength
+* $\lambda$ = L2 regularization strength
 
-* \$\gamma\$ = penalty associated with adding leaves
+* $\gamma$ = penalty associated with adding leaves
 
 ---
 
@@ -716,7 +716,7 @@ $$
 
 The purpose is to discourage excessively large leaf values.
 
-As \$\lambda\$ increases:
+As $\lambda$ increases:
 
 ```text
 
@@ -742,7 +742,7 @@ In XGBoost, this regularization applies to **tree leaf weights/scores**.
 
 # 🍃 Optimal Leaf Weight
 
-For a leaf \$j\$, define:
+For a leaf $j$, define:
 
 $$
 G_j=\sum_{i\in I_j}g_i
@@ -814,13 +814,13 @@ $$
 
 where:
 
-* \$G_L,G_R\$ = gradient sums
+* $G_L,G_R$ = gradient sums
 
-* \$H_L,H_R\$ = Hessian sums
+* $H_L,H_R$ = Hessian sums
 
-* \$\lambda\$ = L2 regularization
+* $\lambda$ = L2 regularization
 
-* \$\gamma\$ = split penalty
+* $\gamma$ = split penalty
 
 A split is useful only when its improvement justifies the additional complexity.
 
